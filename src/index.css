@@ -15,3 +15,31 @@ code {
 area{
   cursor:url('./assets/img/cursor1.png'), auto !important;
 }
+
+
+.preload-wrap{
+  width: 100vw;
+  height: 100vh;
+  background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.preload-wrap img{
+  width: 200px;
+  animation-name: scale;
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes scale {
+  from{
+    transform: scale(0.8);
+  }
+  to{
+    transform: scale(1);
+  }
+}
