@@ -1,101 +1,42 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import bgImg from './assets/img/ANAL GAZERS SITE.png'
 import { PreloadMedia, MediaType } from 'react-preload-media';
 
 const App = () => {
 
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true);
+  const [scrollable, setScrollable] = useState(false)
 
   const media = [
     {
       type: MediaType.Image,
       url: '/ANAL GAZERS SITE.png'
-    },
-    {
-      type: MediaType.Audio,
-      url: '/sounds/fart1.mp3'
-    },
-    {
-      type: MediaType.Audio,
-      url: '/sounds/fart2.mp3'
-    },
-    {
-      type: MediaType.Audio,
-      url: '/sounds/fart3.mp3'
-    },
-    {
-      type: MediaType.Audio,
-      url: '/sounds/fart4.mp3'
-    },
-    {
-      type: MediaType.Audio,
-      url: '/sounds/fart5.mp3'
-    },
-    {
-      type: MediaType.Audio,
-      url: '/sounds/fart6.mp3'
-    },
-    {
-      type: MediaType.Audio,
-      url: '/sounds/fart1.mp3'
-    },
-    {
-      type: MediaType.Audio,
-      url: '/sounds/fart7.mp3'
-    },
-    {
-      type: MediaType.Audio,
-      url: '/sounds/fart8.mp3'
-    },
-    {
-      type: MediaType.Audio,
-      url: '/sounds/fart9.mp3'
-    },
-    {
-      type: MediaType.Audio,
-      url: '/sounds/fart10.mp3'
-    },
-    {
-      type: MediaType.Audio,
-      url: '/sounds/fart11.mp3'
-    },
-    {
-      type: MediaType.Audio,
-      url: '/sounds/fart12.mp3'
-    },
-    {
-      type: MediaType.Audio,
-      url: '/sounds/fart13.mp3'
-    },
-    {
-      type: MediaType.Audio,
-      url: '/sounds/fart14.mp3'
-    },
+    }
   ]
-
 
   const playSound = name => {
     const audio = new Audio(`/sounds/${name}.mp3`);
     audio.play();
   }
 
+
   const handleScroll = (x,y) => {
-    playSound("fart2")
     window.scrollTo({
       left: x,
       top: y,
       behavior: "smooth"
-    })
+    });
   }
 
   const handleFinished = () => {
-    console.log("done")
     setLoading(false);
-    window.scrollTo({
-      left: 145,
-      top: 0,
-      behavior: "auto"
-    })
+    setTimeout(()=>{
+      window.scrollTo({
+        left: 250,
+        top: 500,
+        behavior: "auto"
+      })
+    },100)
   }
 
 
@@ -112,9 +53,11 @@ const App = () => {
       <>
         <img src={bgImg} className="bgImg" useMap='#bgmap' />
         <map name="bgmap">
-          
             <area 
-              onClick={()=>handleScroll(125,1390)}
+              onClick={()=>{
+                playSound("fart2");
+                handleScroll(125,1390)
+              }}
             alt="enter" title="Enter" coords="959,730,1225,497" shape="rect"/>
             <area onClick={()=> playSound("fart4")} id='imgone' alt="imgone" title="img one" coords="475,1706,165,1390" shape="rect"/>
             <area onClick={()=> playSound("fart4")} alt="imgtwo" title="img two" coords="1386,1623,1692,1930" shape="rect"/>
